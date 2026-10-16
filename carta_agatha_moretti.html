@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Ed — Agatha Moretti</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#332b2a;--wine:#713d49;--paper:#f5ead7;--edge:#d6c2a4}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% 0%,#49373a 0,#211e25 55%,#151419 100%);color:var(--ink);font-family:'Cormorant Garamond',Georgia,serif;overflow-x:hidden}
+.ambient{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:4}
+.tear{position:absolute;top:-50px;width:2px;height:36px;background:linear-gradient(transparent,rgba(191,207,220,.75));border-radius:50%;filter:blur(.3px);animation:fall linear infinite;opacity:0}
+@keyframes fall{0%{transform:translateY(-10vh);opacity:0}12%{opacity:.55}85%{opacity:.35}100%{transform:translateY(115vh);opacity:0}}
+.scene{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:44px 18px;position:relative}
+.glow{position:absolute;width:min(70vw,680px);height:min(70vw,680px);background:#a66c7a;filter:blur(120px);opacity:.09;border-radius:50%}
+.envelope{position:relative;width:min(100%,760px);padding:clamp(22px,5vw,56px);background:linear-gradient(135deg,#f9f0df,#eee0c7 55%,#f8eedc);box-shadow:0 25px 90px #0009,0 0 0 1px #d5c09c,0 0 0 8px #eee0c71a;border-radius:2px;transform:rotate(-.25deg);overflow:hidden}
+.envelope:before{content:"";position:absolute;inset:10px;border:1px solid #a68a6d55;pointer-events:none}
+.envelope:after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,#72543b05 0px,#72543b05 1px,transparent 1px,transparent 5px);pointer-events:none}
+.topline{text-align:center;text-transform:uppercase;letter-spacing:.32em;font-size:11px;color:#876c61;margin:0 0 16px}
+h1{font-weight:500;text-align:center;font-size:clamp(34px,6vw,55px);line-height:1.02;margin:0;color:#54383d}
+.subtitle{text-align:center;font-style:italic;font-size:17px;color:#806c60;margin:12px 0 26px}
+.ornament{display:flex;align-items:center;gap:15px;justify-content:center;color:#9a6a72;margin:22px 0 30px}
+.ornament:before,.ornament:after{content:"";height:1px;width:74px;background:#b79a7c}
+.letter{font-size:clamp(17px,2.2vw,20px);line-height:1.72;white-space:normal;position:relative;z-index:1}
+.letter p{margin:0 0 1.12em;text-indent:1.5em}
+.letter p:first-child{text-indent:0}
+.letter strong{color:#733f4a;font-weight:700}
+.letter em{color:#744953}
+.signature{font-family:'Great Vibes',cursive;font-size:clamp(38px,7vw,58px);color:#713d49;text-align:right;margin:30px 10px 0;transform:rotate(-3deg)}
+.footer{text-align:center;color:#a99587;font-size:13px;letter-spacing:.14em;margin-top:25px}
+.seal{width:52px;height:52px;margin:25px auto 0;border-radius:50%;display:grid;place-items:center;background:#783f4b;color:#f2dfc7;font-size:25px;box-shadow:0 3px 8px #0002;border:2px solid #a66d78}
+.opening{position:fixed;inset:0;z-index:10;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at center,#55404a,#17151b 70%);transition:opacity 1s,visibility 1s;padding:22px}
+.opening.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.open-card{text-align:center;color:#f3e6d4;max-width:470px}
+.open-card .small{letter-spacing:.28em;text-transform:uppercase;font-size:11px;color:#c8a9a4}
+.open-card h2{font-size:clamp(38px,7vw,58px);font-weight:500;line-height:1.05;margin:18px 0}
+.open-card p{font-size:18px;line-height:1.5;color:#d4c4c0}
+.open-btn{border:1px solid #c8a5a0;background:transparent;color:#f3e6d4;padding:14px 25px;font:inherit;font-size:16px;letter-spacing:.12em;cursor:pointer;margin-top:15px;transition:.25s}
+.open-btn:hover{background:#f3e6d4;color:#35272d;transform:translateY(-2px)}
+.hint{font-size:13px!important;color:#a9929a!important;margin-top:18px}
+@media(max-width:560px){.scene{padding:20px 10px}.envelope{padding:26px 22px}.letter{line-height:1.62}.envelope:before{inset:6px}.subtitle{margin-bottom:20px}}
+@media print{body{background:white}.ambient,.opening{display:none!important}.scene{padding:0}.envelope{box-shadow:none;width:100%;background:white}.letter{font-size:12pt}}
+</style>
+</head>
+<body>
+<div class="ambient" id="tears"></div>
+<div class="opening" id="opening">
+  <div class="open-card">
+    <div class="small">uma carta que talvez nunca devesse ter sido escrita</div>
+    <h2>Para Ed.</h2>
+    <p>Há coisas que precisam ser ditas, mesmo quando já sabemos a resposta.</p>
+    <button class="open-btn" id="openLetter">ABRIR A CARTA</button>
+    <p class="hint">Obrigado.</p>
+  </div>
+</div>
+<main class="scene">
+<div class="glow"></div>
+<article class="envelope">
+  <p class="topline">escrita com tudo aquilo que não consegui dizer</p>
+  <h1>Para Ed</h1>
+  <p class="subtitle">“Por favor, continue vivo.”</p>
+  <div class="ornament">✦</div>
+  <section class="letter">
+<p>Ed,</p>
+<p>Eu fiz uma pergunta a você quando voltamos. Já sabia qual seria a resposta, mas, considerando tudo o que aprendi nas últimas semanas, senti que ainda deveria perguntar em respeito a você. Sua resposta foi exatamente a que eu esperava e, honestamente, a melhor que poderia ter recebido: é melhor assim. Acho que, em algum momento desde que nos conhecemos, passei a compreender que existem coisas que não deixam de precisar ser ditas apenas porque já sabemos a resposta.</p>
+<p>Por isso, quero deixar uma coisa muito clara antes de qualquer outra: tudo o que já disse a você é verdade, exatamente aquilo que sinto, sem qualquer exagero ou tentativa de fazer com que pareça algo diferente do que realmente é. Na verdade, se for para ser honesta, acho que disse muito menos do que deveria. É difícil formular tudo o que sinto, especialmente quando estou com você. Parece que, por alguma razão que ainda não compreendo inteiramente, minha capacidade de organizar pensamentos e transformá-los em palavras desaparece justamente quando mais gostaria de conseguir me expressar verbalmente. Inicialmente, considerei isso um problema, mas você insistiu tantas vezes que não era, que espero que esteja dizendo a verdade. Espero que, assim como disse, mesmo quando eu não tive a capacidade de explicar claramente, você tenha realmente entendido. Espero que nunca duvide do quanto me importo com você e do quanto continuarei me importando, independentemente do que aconteça depois que ler essa carta.</p>
+<p>Você foi a primeira pessoa que me fez sentir verdadeiramente compreendida. Não sei se alguém já entendeu tanto sobre o que penso e sinto quanto você. Na maior parte do tempo, ainda me surpreendo com a facilidade com que você percebe quando estou mentindo, quando quero dizer alguma coisa que não consegui formular ou quando minhas palavras significam algo diferente daquilo que parecem dizer. Às vezes, você sequer precisa que eu diga alguma coisa. É quase desconcertante perceber que alguém pode compreender até mesmo os meus silêncios.</p>
+<p>Sempre foi mais fácil me expressar pela escrita. Durante muito tempo, achei que, se conseguisse organizar suficientemente bem as palavras, talvez finalmente fosse possível fazer com que alguém entendesse o que realmente quero dizer. Nem sempre funcionou. Com você, entretanto, parece funcionar mesmo quando não escrevo nada. Não sei como explicar isso sem tornar a explicação desnecessariamente complicada, então vou apenas dizer que sou muito grata por ter conhecido alguém como você. Sou grata por tudo o que fez por mim, inclusive pelas coisas que provavelmente nem percebeu que estava fazendo.</p>
+<p>E, justamente por isso, preciso pedir que <strong>continue vivo.</strong></p>
+<p>Eu observei você lutar naquele lugar. Vi como pensava, como utilizava suas estratégias, como aprendeu a recuar quando necessário. Você não precisava vencer todas as vezes para continuar tentando e espero que tenha compreendido a importância disso. Você me prometeu que, se fosse necessário, correria o quanto precisasse por nós, então, por favor, continue fazendo isso. Continue correndo quando precisar, recuando quando for necessário e encontrando maneiras de permanecer vivo. Não transforme a sua disposição para proteger outras pessoas em uma justificativa para deixar de proteger a si mesmo e, mais do que isso, não se arrisque desenfreadamente.</p>
+<p>Você disse que a maior dificuldade nunca seria morrer por alguém, mas viver por essa pessoa. Nunca tinha pensado sobre isso dessa maneira. Foi você quem me ensinou que é muito mais difícil aceitar que a própria existência pode significar tanto para alguém, sem que essa pessoa necessariamente espere alguma coisa em troca. Acho que ainda estou tentando compreender completamente como fazer isso e o que exatamente significa. Porque, desde que consigo me lembrar, considero a minha própria existência algo que é útil para ser utilizado em função de um propósito, sem pensar muito no que ela significava para quem estivesse ao meu redor.</p>
+<p>Você é a pessoa mais compreensiva e fácil de conviver que já tive o prazer de encontrar. Por favor, não deixe que outras pessoas convençam você do contrário. Sei que existem muitas pessoas dispostas a falar sobre quem você é, mas poucas realmente tiveram a oportunidade de conhecê-lo. Poucas passaram horas ao seu lado, em um lugar confortável, sem que houvesse alguma necessidade imediata, sem que você ou outros precisassem resolver um problema ou provar alguma coisa. <em>Poucas puderam observar quem você é quando não está tentando ser útil para alguém.</em></p>
+<p>Por isso, peço que não acredite em tudo o que disserem sobre você sem antes considerar se essas pessoas realmente o conhecem, e digo isso me referindo a pessoas no passado, presente e futuro. Você não precisa aceitar como verdade toda interpretação que fazem de suas ações, especialmente quando essas pessoas não se deram ao trabalho de compreender suas razões ou entendê-lo verdadeiramente.</p>
+<p>Gostaria de poder permanecer ao seu lado, como conversamos ontem, para garantir que você também começasse a enxergar a si mesmo de uma maneira um pouco mais justa. Gostaria de poder estar presente se novamente você começasse a se esquecer de tudo aquilo que é e então começasse a acreditar novamente em coisas que não correspondem à realidade. Mas não posso. <em>E sinto muito.</em></p>
+<p>Sinto muito porque sei que estou quebrando a confiança que você depositou em mim. Uma confiança que, honestamente, nunca imaginei que receberia de alguém nesse nível e que, justamente por isso, deveria ter tratado com mais cuidado do que posso oferecer. Não existem muitas pessoas que tenham confiado em mim dessa maneira e ainda estou sendo leviana em considerar que existiu mais de uma. Sei o quanto significa permitir que alguém conheça partes suas que você mesmo não sabe muito bem como compreender e sei que não deveria ter colocado essa confiança em risco.</p>
+<p>Mas eu errei, Ed. E o pior é que demorei para compreender a dimensão do meu erro. Existe algo que ainda não contei a você, algo que considero potencialmente pior do que tudo aquilo que já sabe sobre mim e algo de que até poucos dias atrás ainda não tinha me dado conta. Tenho motivos para acreditar que você seria compreensivo mesmo diante disso, e, ironicamente, essa possibilidade é parte do que torna tudo tão difícil.</p>
+<p>Não contar é uma imposição que fiz a mim mesma. Não estou dizendo que seja a decisão correta, tampouco espero que você a compreenda; apenas acredito que seja necessária. Não conseguiria explicar olhando nos seus olhos, porque sei que acabaria cedendo, assim como já fiz. Sei que você faria perguntas, que tentaria compreender e que, em algum momento, eu provavelmente deixaria de sustentar a decisão que tomei. Por isso, quis ter essa <em>“última” noite normal ao seu lado.</em></p>
+<p>Preciso admitir que fui egoísta. Quis aproveitar mais um pouco daquilo que sabia que estava prestes a abandonar, sem permitir que você soubesse o que estava prestes a acontecer. Não sei se essa escolha vai magoá-lo, mas, se magoar como imagino que vai, sinto muito mesmo. Se pudesse encontrar uma maneira de fazer isso sem causar sofrimento a você, teria escolhido essa alternativa. Não encontrei.</p>
+<p>Também preciso pedir desculpas pela carta que entreguei depois da morte de Catherine, mesmo que você tenha repetido tantas vezes que não era necessário. Não acho que estivesse pensando de maneira lógica quando escrevi aquilo. Foi impulsivo, e definitivamente não era assim que eu costumava agir há anos. Você tem esse efeito sobre mim. Por alguma razão, acabo falando sobre coisas que nunca tive coragem de externar apenas porque sei que é você quem vai escutar ou ler. Talvez seja mais fácil quando não preciso observar sua reação imediatamente e por isso escrevo tanto para você. Talvez seja mais fácil porque, com você, a possibilidade de ser compreendida parece real o suficiente para que eu me arrisque.</p>
+<p>Naquela carta, falei sobre me sentir como a Noite, como alguém que filtra e reduz a luz daqueles que se esforçam para permanecer ao meu redor, e existe algo que eu gostaria de ter dito, mas não tive coragem: durante muito tempo, senti o mesmo em relação a você.</p>
+<p>Você é brilhante, Ed. É falante, é capaz de ocupar um ambiente de uma maneira que eu nunca soube e nunca saberei fazer. Temos coisas em comum, mas também diferenças absurdas, e, durante muito tempo, achei que talvez estivesse puxando você para baixo. Que, de alguma maneira, minha presença acabaria cobrindo com a minha escuridão tudo aquilo que existe de bom em você.</p>
+<p>Mas, depois de tudo o que disse sobre sua história e da forma como continuou me chamando, procurando minha companhia e querendo passar tempo comigo, eu estaria mentindo se dissesse que ainda acredito nisso. Na verdade, estaria mentindo se dissesse que <strong>quero acreditar.</strong> Porque, se pudesse escolher sem considerar qualquer outra coisa, eu gostaria de ir com você para a sua fazenda e passar semanas lá. Gostaria de descobrir como seria acordar ao seu lado sem precisar calcular as consequências de permanecer. Gostaria de ter tempo suficiente para aprender todas as coisas que ainda não sei sobre você, mesmo aquelas que provavelmente não considera importantes o bastante para contar, como a sua coleção de cartas Pokémon.</p>
+<p>Gostaria de ter uma vida com você e é por isso que preciso ir embora.</p>
+<p>Depois de tudo o que aconteceu, tecnicamente, poderíamos ficar juntos. Voltamos daquele lugar e, por um instante, a possibilidade pareceu real. Entretanto, a minha permanência aqui representa um risco. Não sei até que ponto, nem todas as consequências que isso poderia trazer, mas sei o suficiente para compreender que não posso simplesmente ignorá-las.</p>
+<p>Existe algo pendente. Algo importante o bastante para que eu não possa fingir que tudo está resolvido, por mais que uma parte de mim queira fazer exatamente isso. Essa pendência não pode ser resolvida estando aqui e, por mais difícil que seja dizer isso, é necessário para que o que queremos seja minimamente cogitado. Espero que esta decisão contribua para que essa questão finalmente seja resolvida. Não posso explicar mais do que isso, mas gostaria que acreditasse que não estou indo embora porque o que sinto por você deixou de existir. Estou indo embora <strong>apesar disso.</strong></p>
+<p><strong>Eu te amo mais do que já amei qualquer coisa ou pessoa.</strong></p>
+<p>Acho que nunca disse isso de maneira suficientemente clara, mas a verdade é que, se eu tivesse que sacrificar tudo para ter uma vida ao seu lado, eu faria. Nunca mais escreveria nada, nunca mais realizaria um ritual, nunca mais faria qualquer coisa que motivou minha existência até agora, se isso significasse passar o resto da vida com você. Mas, neste momento, nenhum desses sacrifícios é suficiente para resolver o que precisa ser resolvido. E, por isso, outras alternativas são necessárias.</p>
+<p>Sinto muito por estar fazendo isso com você. Independentemente do quanto seja compreensivo, sei que nunca vou me perdoar completamente por quebrar a confiança que depositou em mim. Parece que, além de não possuir uma palavra capaz de expressar tudo aquilo que sinto positivamente por você, também precisarei encontrar uma que expresse o maior nível de arrependimento possível.</p>
+<p>Sinto muito, Ed. Sinto muito mesmo.</p>
+<p>Por favor, cuide de si. De verdade, não deixe que nada aconteça com você. Você é muito mais forte do que acredita, embora eu saiba que provavelmente não seja suficiente dizer isso para que passe a acreditar. Se for necessário desistir do objetivo que alinhamos para permanecer vivo, por favor, o faça, pois a única coisa que realmente quero é que continue vivo independentemente disso. Que encontre uma maneira de continuar, mesmo quando não souber exatamente para onde está indo.</p>
+<p>Você me ensinou que viver por alguém pode ser muito mais difícil do que morrer por essa pessoa. Então, por favor, <strong>viva por mim</strong>, como disse que faria. Não porque eu tenha o direito de pedir isso, mas porque, se existe alguma coisa que gostaria de levar comigo ao partir, é a certeza de que você continuará inteiro.</p>
+<p>Eu já comprovei que estarei sempre escutando você, mesmo quando não for capaz de responder. Sei que talvez já tenha dito isso antes, mas preciso pedir: <em>você poderia continuar falando comigo?</em></p>
+<p>Quando você falou comigo depois da morte da Cait, mesmo sem saber se eu estava escutando, você me salvou. Assim como disse sobre si mesmo, você me salvou de maneiras que nem consegue imaginar, maneiras essas que eu nem mesmo consigo descrever, mas você me deu força para levantar, força para não desistir de mim mesma. Talvez não compreenda completamente o quanto, talvez eu mesma ainda não consiga explicar, mas eu escutava, Ed. E, mesmo quando não conseguia responder por diferentes motivos, você continuava falando como se eu ainda estivesse ali.</p>
+<p>Eu estava. Ainda estou. E, enquanto você continuar em pé, enquanto continuar lutando e encontrando motivos para permanecer, estarei com você, da maneira que ainda me for possível, porque é em você que eu pertenço.</p>
+<p>Desculpe por não conseguir ficar. Desculpe por não conseguir cumprir ao seu lado aquilo que decidimos que seria nosso objetivo.</p>
+<p>E, por favor, não duvide do que escrevi. Tudo é verdade. Tudo o que disse a você, tudo o que senti, tudo o que ainda sinto. Se alguma coisa ficou de fora, não foi por falta de importância. Foi porque, mesmo agora, ainda não sei como colocar tudo em palavras.</p>
+<p><em>Você foi a primeira pessoa que me fez acreditar que talvez eu pudesse ser compreendida por inteiro.</em></p>
+<p>Obrigada por isso. <strong>Eu te amo.</strong></p>
+<p>E, como fiz questão de que soubesse, estou e sempre estarei escutando você, ainda que não seja capaz de responder. Cuide-se, Ed.</p>
+<p><em>Ti prego, resta. È tutto ciò che ti chiedo: continua a vivere, continua a esistere, continua a essere qui, anche quando non sarò fisicamente al tuo fianco. Perché non posso permettermi di perdere l’unico luogo al quale io abbia mai sentito di appartenere.</em></p>
+<p><em>Il metallo trova sempre la strada per tornare alla calamita che lo ha attratto. Tu sei stato il primo a risvegliare questa forza in me, anche se all’inizio non me ne sono resa conto, Ed. E, così come il metallo appartiene alla calamita, io appartengo a te, anche quando saremo tenuti separati.</em></p>
+<p>Obrigado por não desistir de mim, mesmo quando eu não conseguia compreender o que você tentava me dizer tão claramente. Me desculpe por ter demorado tanto a enxergar algo que você se esforçou tanto para me fazer entender. Nunca foi por não me importar, simplesmente nunca cogitei que alguém poderia sentir isso por mim da forma como você sente.</p>
+  </section>
+  <div class="signature">Agatha Moretti</div>
+  <div class="seal">ED</div>
+  <p class="footer">COM TODO O AMOR QUE NÃO SOUBE DIZER EM VOZ ALTA</p>
+</article>
+</main>
+<script>
+const tearRoot=document.getElementById('tears');
+for(let i=0;i<28;i++){const t=document.createElement('i');t.className='tear';t.style.left=(Math.random()*100)+'%';t.style.animationDuration=(4+Math.random()*7)+'s';t.style.animationDelay=(-Math.random()*12)+'s';t.style.height=(18+Math.random()*38)+'px';t.style.opacity=(.2+Math.random()*.45);tearRoot.appendChild(t)}
+document.getElementById('openLetter').addEventListener('click',()=>{document.getElementById('opening').classList.add('hidden');document.body.style.overflowX='hidden';});
+</script>
+</body>
+</html>
