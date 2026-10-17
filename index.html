@@ -30,6 +30,10 @@ h1{font-weight:500;text-align:center;font-size:clamp(34px,6vw,55px);line-height:
 .letter em{color:#744953}
 .signature{font-family:'Great Vibes',cursive;font-size:clamp(38px,7vw,58px);color:#713d49;text-align:right;margin:30px 10px 0;transform:rotate(-3deg)}
 .footer{text-align:center;color:#a99587;font-size:13px;letter-spacing:.14em;margin-top:25px}
+.secret-notes{margin-top:8px;text-align:center;font-size:16px;line-height:1.8;color:#f5ead7;user-select:text;cursor:text}
+.secret-notes span{display:block;color:#f5ead7}
+.secret-notes span::selection{color:#fff!important;background:#315fa8!important}
+.secret-notes::selection{color:#fff!important;background:#315fa8!important}
 .seal{width:52px;height:52px;margin:25px auto 0;border-radius:50%;display:grid;place-items:center;background:#783f4b;color:#f2dfc7;font-size:25px;box-shadow:0 3px 8px #0002;border:2px solid #a66d78}
 .opening{position:fixed;inset:0;z-index:10;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at center,#55404a,#17151b 70%);transition:opacity 1s,visibility 1s;padding:22px}
 .opening.hidden{opacity:0;visibility:hidden;pointer-events:none}
@@ -106,6 +110,10 @@ h1{font-weight:500;text-align:center;font-size:clamp(34px,6vw,55px);line-height:
   <div class="signature">Agatha Moretti</div>
   <div class="seal">ED</div>
   <p class="footer">COM TODO O AMOR QUE NÃO SOUBE DIZER EM VOZ ALTA</p>
+  <div class="secret-notes" aria-label="mensagens secretas">
+    <span>nossa palavra-chave? arvoreazul</span>
+    <span>te amo, meu bem</span>
+  </div>
 </article>
 </main>
 <script>
